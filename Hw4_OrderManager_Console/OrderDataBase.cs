@@ -14,7 +14,7 @@ namespace OrderManager
         private string filename; // 当前DB对应的文件
 
         // 构造函数, 从指定文件中读入订单信息
-        public OrderDataBase(string filename = "")
+        public OrderDataBase(string filename = "orderdata.txt")
         {
             this.filename = filename;
             orderList = new List<Order>();
@@ -30,7 +30,7 @@ namespace OrderManager
             }
             catch (ArgumentException)
             {
-                this.filename = "OrderDataBase.txt";
+                this.filename = "orderdata.txt";
                 return;
             }
 
@@ -41,18 +41,9 @@ namespace OrderManager
             sr.Close();
         }
 
-        // 添加一条订单, 订单号自动生成
-        // 商品数量不能为0, 否则抛出异常
-        public void Add(string customer, string commodity, uint nums)
+        public void Add(Order o)
         {
-            if (nums == 0)
-            {
-                throw new OrderDBException("Failed: nums can not be zero.");
-            }
-            else
-            {
-                orderList.Add(new Order(customer, commodity, nums));
-            }
+            orderList.Add(o); // 过度封装了...?
         }
 
         // 指定某些特征来查找
@@ -75,13 +66,14 @@ namespace OrderManager
         }
 
         // 指定某些特征来删除
-        public void Remove(ulong id = 0, string customer = null, string commodity = null, uint nums = 0)
+        public List<Order> Remove(ulong id = 0, string customer = null, string commodity = null, uint nums = 0)
         {
             List<Order> removeList = Find(id, customer, commodity, nums);
             foreach (Order o in removeList)
             {
                 orderList.Remove(o); // TODO 可以用for循环优化掉额外的空间消耗, 即不调用Find
             }
+            return removeList;
         }
 
         // 保存文件
@@ -109,15 +101,4 @@ namespace OrderManager
         }
         // */
     }
-
-    /*
-      异常
-     */
-    public class OrderDBException : ApplicationException
-    {
-        public OrderDBException(string message) : base(message)
-        {
-        }
-    }
-
 }
