@@ -29,8 +29,7 @@ namespace ordertest
         /// <param name="order">the order will be added</param>
         public void AddOrder(Order order)
         {
-            orderList.
-          foreach (Order o in orderList)
+            foreach (Order o in orderList)
             {
                 if (o.Id.Equals(order.Id))
                 {
@@ -38,7 +37,6 @@ namespace ordertest
                 }
             }
             orderList.Add(order);
-            orderList.ForEach(o => )
         }
 
         /// <summary>
