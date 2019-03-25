@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ordertest {
+namespace ordertest
+{
     /// <summary>
     /// Goods class:the message of goods
     /// </summary>
-    class Goods {
+    class Goods
+    {
 
         private double price;
 
@@ -18,7 +20,8 @@ namespace ordertest {
         /// <param name="id">goods id</param>
         /// <param name="name">goods name</param>
         /// <param name="value">>goods value</param>
-        public Goods(uint id, string name, double value) {
+        public Goods(uint id, string name, double value)
+        {
             Id = id;
             Name = name;
             Price = value;
@@ -37,9 +40,11 @@ namespace ordertest {
         /// <summary>
         /// property : goods value
         /// </summary>
-        public double Price {
+        public double Price
+        {
             get { return price; }
-            set {
+            set
+            {
                 if (value < 0)
                     throw new ArgumentOutOfRangeException("value must >= 0!");
                 price = value;
@@ -50,7 +55,8 @@ namespace ordertest {
         /// override ToString
         /// </summary>
         /// <returns>string:message of the Goods object</returns>
-        public override string ToString() {
+        public override string ToString()
+        {
             return $"Id:{Id}, Name:{Name}, Value:{Price}";
         }
     }

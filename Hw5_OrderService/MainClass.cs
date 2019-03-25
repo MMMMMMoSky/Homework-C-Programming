@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ordertest {
+namespace ordertest
+{
 
-    class MainClass {
-        public static void Main() {
-            try {
+    class MainClass
+    {
+        public static void Main()
+        {
+            try
+            {
                 Customer customer1 = new Customer(1, "Customer1");
                 Customer customer2 = new Customer(2, "Customer2");
 
@@ -50,16 +54,18 @@ namespace ordertest {
                 orders = os.QueryByGoodsName("apple");
                 foreach (Order order in orders)
                     Console.WriteLine(order);
-                
+
                 Console.WriteLine("Remove order(id=2) and qurey all");
                 os.RemoveOrder(2);
                 os.QueryAllOrders().ForEach(
                     od => Console.WriteLine(od));
 
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
             }
-            
+
         }
     }
 }
