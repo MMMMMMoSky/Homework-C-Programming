@@ -76,6 +76,19 @@ namespace OrderService
             return result;
         }
 
+        public override bool Equals(object obj)
+        {
+            var od = obj as Order;
+            return od != null && this.Id == od.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            int ret = (int)Id * 131313131;
+            details.ForEach(od => ret *= od.GetHashCode());
+            return ret;
+        }
+
         /// <summary>
         /// Implement IComparable CompareTo method - provide default sort order.
         /// </summary>
