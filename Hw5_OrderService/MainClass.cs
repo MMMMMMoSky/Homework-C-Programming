@@ -49,21 +49,16 @@ namespace OrderService
                 os.SortById();
                 os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
 
-                /*
+                //*
                 Console.WriteLine(">>> GetOrdersByCustomerName:'Customer2' <<<");
-                orders = os.QueryByCustomerName("Customer2");
-                foreach (Order order in orders)
-                    Console.WriteLine(order);
+                os.QueryByCustomerName("Customer2").ForEach(s => Console.WriteLine(s));
 
                 Console.WriteLine(">>> GetOrdersByGoodsName:'apple' <<<");
-                orders = os.QueryByGoodsName("apple");
-                foreach (Order order in orders)
-                    Console.WriteLine(order);
+                os.QueryByGoodsName("apple").ForEach(s => Console.WriteLine(s));
 
                 Console.WriteLine(">>> Remove order(id=2) and qurey all <<<");
                 os.RemoveOrder(2);
-                os.QueryAllOrders().ForEach(
-                    od => Console.WriteLine(od));
+                os.QueryAllOrders().ForEach(od => Console.WriteLine(od));
                 //*/
             }
             catch (Exception e)
