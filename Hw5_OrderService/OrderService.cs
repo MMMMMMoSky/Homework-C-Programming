@@ -111,5 +111,12 @@ namespace OrderService
             return query.ToList();
         }
 
+        /// <summary>
+        /// sort orderList by Order.Id
+        /// </summary>
+        public void SortById()
+        {
+            orderList.Sort();
+        }
     }
 }

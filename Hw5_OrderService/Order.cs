@@ -11,7 +11,7 @@ namespace OrderService
     /// Order class : all orderDetails
     /// to record each goods and its quantity in this ordering
     /// </summary>
-    class Order
+    class Order : IComparable
     {
 
         private List<OrderDetail> details = new List<OrderDetail>();
@@ -74,6 +74,15 @@ namespace OrderService
             String result = $"orderId:{Id}, customer:({Customer})";
             details.ForEach(detail => result += "\n\t" + detail);
             return result;
+        }
+
+        /// <summary>
+        /// Implement IComparable CompareTo method - provide default sort order.
+        /// </summary>
+        int IComparable.CompareTo(object obj)
+        {
+            var od = obj as Order;
+            return Convert.ToInt32(od == null || this.Id < od.Id);
         }
     }
 }
