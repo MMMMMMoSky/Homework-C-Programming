@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ordertest
+namespace OrderService
 {
     /// <summary>
     /// OrderService:provide ordering service,

@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ordertest
+namespace OrderService
 {
-
     /// <summary>
     /// Customer the man who orders goods.
     /// </summary>
