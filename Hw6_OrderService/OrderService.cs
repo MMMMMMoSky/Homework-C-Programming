@@ -84,18 +84,15 @@ namespace OrderService
         /// <returns></returns> 
         public List<Order> QueryByGoodsName(string goodsName)
         {
-            List<Order> result = new List<Order>();
-            foreach (Order order in orderList)
-            {
-                foreach (OrderDetail detail in order.Details)
-                {
-                    if (detail.Goods.Name == goodsName)
-                    {
-                        result.Add(order);
-                        break;
-                    }
+            var query = orderList.Where(
+                order => {
+                    var subquery = from detail in order.Details
+                                   where detail.Goods.Name == goodsName
+                                   select detail;
+                    return subquery.Count() > 0;
                 }
-            }
+            );
+            List<Order> result = query.ToList();
             return result;
         }
 
