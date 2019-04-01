@@ -11,6 +11,55 @@ namespace OrderService
     {
         public static void Main()
         {
+            OrderService os = AddOrdersManually();
+            SerializeTest(os);
+        }
+
+        public static void SerializeTest(OrderService os)
+        {
+            try
+            {
+                os.ExportToXml("test.xml");
+                OrderService os2 = new OrderService();
+                os2.ImportFromXml("test.xml");
+                os2.ExportToXml("test2.xml");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        public static void QueryTest(OrderService os)
+        {
+            try
+            {
+                Console.WriteLine(">>> Get All Orders <<<");
+                os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
+                
+                Console.WriteLine(">>> Sort Orders by Id <<<");
+                Console.WriteLine(">>> Get All Orders <<<");
+                os.SortById();
+                os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
+
+                Console.WriteLine(">>> GetOrdersByCustomerName:'Customer2' <<<");
+                os.QueryByCustomerName("Customer2").ForEach(s => Console.WriteLine(s));
+
+                Console.WriteLine(">>> GetOrdersByGoodsName:'apple' <<<");
+                os.QueryByGoodsName("apple").ForEach(s => Console.WriteLine(s));
+
+                Console.WriteLine(">>> Remove order(id=2) and qurey all <<<");
+                os.RemoveOrder(2);
+                os.QueryAllOrders().ForEach(od => Console.WriteLine(od));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
+
+        private static OrderService AddOrdersManually()
+        {
             try
             {
                 Customer customer1 = new Customer(1, "Customer1");
@@ -41,33 +90,12 @@ namespace OrderService
                 os.AddOrder(order2);
                 os.AddOrder(order3);
 
-                os.ExportToXml("test.xml");
-
-                /*
-                Console.WriteLine(">>> Get All Orders <<<");
-                os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
-                
-                Console.WriteLine(">>> Sort Orders by Id <<<");
-                Console.WriteLine(">>> Get All Orders <<<");
-                os.SortById();
-                os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
-                //*/
-
-                /*
-                Console.WriteLine(">>> GetOrdersByCustomerName:'Customer2' <<<");
-                os.QueryByCustomerName("Customer2").ForEach(s => Console.WriteLine(s));
-
-                Console.WriteLine(">>> GetOrdersByGoodsName:'apple' <<<");
-                os.QueryByGoodsName("apple").ForEach(s => Console.WriteLine(s));
-
-                Console.WriteLine(">>> Remove order(id=2) and qurey all <<<");
-                os.RemoveOrder(2);
-                os.QueryAllOrders().ForEach(od => Console.WriteLine(od));
-                //*/
+                return os;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
+                return null;
             }
         }
     }
