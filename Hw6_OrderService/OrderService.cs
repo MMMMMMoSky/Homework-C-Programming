@@ -128,12 +128,10 @@ namespace OrderService
         {
             try
             {
-                using (StreamWriter writer = new StreamWriter(filePath))
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Order>));
+                using (FileStream fs = new FileStream(filePath, FileMode.Create))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(GetType());
-                    XmlSerializerNamespaces nameSpace = new XmlSerializerNamespaces();
-                    nameSpace.Add("", "");
-                    xmlSerializer.Serialize(writer, this, nameSpace);
+                    xmlSerializer.Serialize(fs, orderList);
                 }
                 return true;
             }
