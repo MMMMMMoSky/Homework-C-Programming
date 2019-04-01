@@ -141,5 +141,28 @@ namespace OrderService
                 return false;
             }
         }
+
+        /// <summary>
+        /// import from xml file
+        /// </summary>
+        /// <param name="filepath">absolute path or relative path</param?>
+        /// <returns>bool: succeed or not</returns>
+        public bool ImportFromXml(string filePath)
+        {
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Order>));
+                using (FileStream fs = new FileStream(filePath, FileMode.Open))
+                {
+                    orderList = (List<Order>)xmlSerializer.Deserialize(fs);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
+        }
     }
 }
