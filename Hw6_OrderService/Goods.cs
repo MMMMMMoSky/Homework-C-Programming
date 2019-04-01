@@ -9,10 +9,13 @@ namespace OrderService
     /// <summary>
     /// Goods class:the message of goods
     /// </summary>
+    [Serializable]
     public class Goods
     {
 
         private double price;
+
+        public Goods() { }
 
         /// <summary>
         /// Goods constuctor

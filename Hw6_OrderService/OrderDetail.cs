@@ -11,8 +11,11 @@ namespace OrderService
     /// OrderDetail class : a entry of an order object
     /// to record the goods and its quantity
     /// </summary>
+    [Serializable]
     public class OrderDetail
     {
+
+        public OrderDetail() { }
 
         /// <summary>
         /// OrderDetail constructor

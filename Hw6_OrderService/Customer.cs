@@ -9,6 +9,7 @@ namespace OrderService
     /// <summary>
     /// Customer the man who orders goods.
     /// </summary>
+    [Serializable]
     public class Customer
     {
 
@@ -22,6 +23,7 @@ namespace OrderService
         /// </summary>
         public string Name { get; set; }
 
+        public Customer() { }
 
         /// <summary>
         /// Customer constructor

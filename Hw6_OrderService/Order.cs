@@ -11,10 +11,15 @@ namespace OrderService
     /// Order class : all orderDetails
     /// to record each goods and its quantity in this ordering
     /// </summary>
+    [Serializable]
     public class Order : IComparable
     {
 
         private List<OrderDetail> details = new List<OrderDetail>();
+
+        public Order()
+        {
+        }
 
         /// <summary>
         /// Order constructor
@@ -40,7 +45,14 @@ namespace OrderService
 
         public List<OrderDetail> Details
         {
-            get => this.details;
+            get { return details; }
+            set
+            {
+                if (value.GetType() == typeof(List<OrderDetail>))
+                {
+                    details = value;
+                }
+            }
         }
 
         /// <summary>
