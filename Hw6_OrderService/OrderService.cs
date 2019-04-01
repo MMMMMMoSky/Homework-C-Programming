@@ -1,8 +1,10 @@
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace OrderService
 {
@@ -11,7 +13,7 @@ namespace OrderService
     /// like add order, remove order, query order and so on
     /// 实现添加订单、删除订单、修改订单、查询订单（按照订单号、商品名称、客户等字段进行查询)
     /// </summary>
-    class OrderService
+    public class OrderService
     {
 
         private List<Order> orderList;
@@ -85,7 +87,8 @@ namespace OrderService
         public List<Order> QueryByGoodsName(string goodsName)
         {
             var query = orderList.Where(
-                order => {
+                order =>
+                {
                     var subquery = from detail in order.Details
                                    where detail.Goods.Name == goodsName
                                    select detail;
@@ -114,6 +117,31 @@ namespace OrderService
         public void SortById()
         {
             orderList.Sort();
+        }
+
+        /// <summary>
+        /// export to xml file
+        /// </summary>
+        /// <param name="filepath">absolute path or relative path</param?>
+        /// <returns>bool: succeed or not</returns>
+        public bool ExportToXml(string filePath)
+        {
+            try
+            {
+                using (StreamWriter writer = new StreamWriter(filePath))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(orderList.GetType());
+                    XmlSerializerNamespaces nameSpace = new XmlSerializerNamespaces();
+                    nameSpace.Add("", "");
+                    xmlSerializer.Serialize(writer, orderList, nameSpace);
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
+            }
         }
     }
 }
