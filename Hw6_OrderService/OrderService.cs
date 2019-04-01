@@ -130,10 +130,10 @@ namespace OrderService
             {
                 using (StreamWriter writer = new StreamWriter(filePath))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(orderList.GetType());
+                    XmlSerializer xmlSerializer = new XmlSerializer(GetType());
                     XmlSerializerNamespaces nameSpace = new XmlSerializerNamespaces();
                     nameSpace.Add("", "");
-                    xmlSerializer.Serialize(writer, orderList, nameSpace);
+                    xmlSerializer.Serialize(writer, this, nameSpace);
                 }
                 return true;
             }

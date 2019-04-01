@@ -11,7 +11,7 @@ namespace OrderService
     /// OrderDetail class : a entry of an order object
     /// to record the goods and its quantity
     /// </summary>
-    class OrderDetail
+    public class OrderDetail
     {
 
         /// <summary>

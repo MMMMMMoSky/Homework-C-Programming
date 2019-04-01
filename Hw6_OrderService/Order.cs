@@ -11,7 +11,7 @@ namespace OrderService
     /// Order class : all orderDetails
     /// to record each goods and its quantity in this ordering
     /// </summary>
-    class Order : IComparable
+    public class Order : IComparable
     {
 
         private List<OrderDetail> details = new List<OrderDetail>();

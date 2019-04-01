@@ -9,7 +9,7 @@ namespace OrderService
     /// <summary>
     /// Customer the man who orders goods.
     /// </summary>
-    class Customer
+    public class Customer
     {
 
         /// <summary>

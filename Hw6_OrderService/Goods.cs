@@ -9,7 +9,7 @@ namespace OrderService
     /// <summary>
     /// Goods class:the message of goods
     /// </summary>
-    class Goods
+    public class Goods
     {
 
         private double price;
