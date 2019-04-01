@@ -41,6 +41,9 @@ namespace OrderService
                 os.AddOrder(order2);
                 os.AddOrder(order3);
 
+                os.ExportToXml("test.xml");
+
+                /*
                 Console.WriteLine(">>> Get All Orders <<<");
                 os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
                 
@@ -48,8 +51,9 @@ namespace OrderService
                 Console.WriteLine(">>> Get All Orders <<<");
                 os.SortById();
                 os.QueryAllOrders().ForEach(s => Console.WriteLine(s));
+                //*/
 
-                //*
+                /*
                 Console.WriteLine(">>> GetOrdersByCustomerName:'Customer2' <<<");
                 os.QueryByCustomerName("Customer2").ForEach(s => Console.WriteLine(s));
 
