@@ -30,16 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.QueryContent = new System.Windows.Forms.TextBox();
             this.ExportButton = new System.Windows.Forms.Button();
             this.ImportButton = new System.Windows.Forms.Button();
             this.QueryButton = new System.Windows.Forms.Button();
             this.QueryBy = new System.Windows.Forms.ComboBox();
             this.QueryResult = new System.Windows.Forms.DataGridView();
+            this.New_Button = new System.Windows.Forms.Button();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalAmountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.QueryContent = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.QueryResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
@@ -47,6 +48,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.New_Button);
             this.panel1.Controls.Add(this.QueryContent);
             this.panel1.Controls.Add(this.ExportButton);
             this.panel1.Controls.Add(this.ImportButton);
@@ -57,6 +59,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1744, 160);
             this.panel1.TabIndex = 0;
+            // 
+            // QueryContent
+            // 
+            this.QueryContent.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.QueryContent.Location = new System.Drawing.Point(1426, 57);
+            this.QueryContent.Name = "QueryContent";
+            this.QueryContent.Size = new System.Drawing.Size(224, 43);
+            this.QueryContent.TabIndex = 4;
             // 
             // ExportButton
             // 
@@ -120,6 +130,17 @@
             this.QueryResult.TabIndex = 1;
             this.QueryResult.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.QueryResult_CellContentClick);
             // 
+            // New_Button
+            // 
+            this.New_Button.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.New_Button.Location = new System.Drawing.Point(474, 41);
+            this.New_Button.Name = "New_Button";
+            this.New_Button.Size = new System.Drawing.Size(140, 74);
+            this.New_Button.TabIndex = 5;
+            this.New_Button.Text = "New";
+            this.New_Button.UseVisualStyleBackColor = true;
+            this.New_Button.Click += new System.EventHandler(this.New_Button_Click);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
@@ -142,14 +163,6 @@
             // orderBindingSource
             // 
             this.orderBindingSource.DataSource = typeof(ordertest.Order);
-            // 
-            // QueryContent
-            // 
-            this.QueryContent.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.QueryContent.Location = new System.Drawing.Point(1426, 57);
-            this.QueryContent.Name = "QueryContent";
-            this.QueryContent.Size = new System.Drawing.Size(224, 43);
-            this.QueryContent.TabIndex = 4;
             // 
             // OrderServiceForm
             // 
@@ -182,6 +195,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalAmountDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource orderBindingSource;
         private System.Windows.Forms.TextBox QueryContent;
+        private System.Windows.Forms.Button New_Button;
     }
 }
 

@@ -95,5 +95,16 @@ namespace Hw8_OrderService
         {
 
         }
+
+        private void New_Button_Click(object sender, EventArgs e)
+        {
+            NewOrder newOrderForm = new NewOrder(AddOrder); // 传入委托, 用于回调添加新的订单
+            newOrderForm.ShowDialog();
+        }
+
+        public void AddOrder(Order order)
+        {
+            orderService.AddOrder(order);
+        }
     }
 }
